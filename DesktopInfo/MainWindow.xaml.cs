@@ -146,6 +146,7 @@ namespace DesktopInfo
                 System.Windows.Controls.Label lbl = (System.Windows.Controls.Label)child;
                 if (lbl != null) {
                     string text = hostnameLabel.Content.ToString();
+                    System.Windows.MessageBox.Show(lbl.FontSize.ToString());
                     if (size.Width <= TextRenderer.MeasureText(text, new Font("Segoe UI", (int)lbl.FontSize)).Width)
                     {
                         size = TextRenderer.MeasureText(text, new Font("Segoe UI", (int)lbl.FontSize));
@@ -164,7 +165,7 @@ namespace DesktopInfo
                 }
             }
 
-            frame.Width = size.Width + 10;
+            frame.Width = size.Width;
 
             frame.Left = desktopWorkingArea.Right - frame.Width;
         }
