@@ -18,6 +18,8 @@ using System.Management;
 using System.Windows.Threading;
 using System.Threading;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace DesktopInfo
 {
@@ -138,7 +140,17 @@ namespace DesktopInfo
 
         void updateFramePos() {
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
-            
+            string baseline = uptimeLabel.Content.ToString();
+            //Measure the length of the string, baseline, in pixels.
+            System.Drawing.Size size = TextRenderer.MeasureText(baseline, new Font("Segoe UI", 12));
+            uptimeLabel.Width = size.Width;
+            hostnameLabel.Width = size.Width;
+            ipLabel.Width = size.Width;
+            biosLabel.Width = size.Width;
+            osLabel.Width = size.Width;
+
+            frame.Width = size.Width + 10;
+
             frame.Left = desktopWorkingArea.Right - frame.Width;
         }
     }
