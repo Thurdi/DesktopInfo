@@ -1,0 +1,16 @@
+﻿<Window x:Name="frame" x:Class="DesktopInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopInfo"
+        mc:Ignorable="d"
+        Title="MainWindow" Foreground="{x:Null}" Background="{x:Null}" Visibility="Visible" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Width="200" Height="200">
+    <Grid x:Name="dataGrid">
+        <Label x:Name="hostnameLabel" Content="hostname" HorizontalAlignment="Left" Margin="10,0,-310,0" VerticalAlignment="Top" Foreground="White" FontSize="12" Grid.RowSpan="2"/>
+        <Label x:Name="ipLabel" Content="ip addr" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Foreground="White" FontSize="12" Grid.RowSpan="2"/>
+        <Label x:Name="biosLabel" Content="bios ver" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Foreground="White" FontSize="12" Grid.RowSpan="2"/>
+        <Label x:Name="osLabel" Content="OS ver" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" FontSize="12" Grid.RowSpan="2"/>
+        <Label x:Name="uptimeLabel" Content="uptime" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Foreground="White" FontSize="12" Grid.RowSpan="2"/>
+    </Grid>
+</Window>
