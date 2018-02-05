@@ -140,14 +140,29 @@ namespace DesktopInfo
 
         void updateFramePos() {
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
-            string baseline = uptimeLabel.Content.ToString();
-            //Measure the length of the string, baseline, in pixels.
-            System.Drawing.Size size = TextRenderer.MeasureText(baseline, new Font("Segoe UI", 12));
-            uptimeLabel.Width = size.Width;
-            hostnameLabel.Width = size.Width;
-            ipLabel.Width = size.Width;
-            biosLabel.Width = size.Width;
-            osLabel.Width = size.Width;
+            //Determine longest label and convert its measurements to pixels.
+            System.Drawing.Size size = new System.Drawing.Size();
+            foreach (var child in dataGrid.Children) {
+                System.Windows.Controls.Label lbl = (System.Windows.Controls.Label)child;
+                if (lbl != null) {
+                    string text = hostnameLabel.Content.ToString();
+                    if (size.Width <= TextRenderer.MeasureText(text, new Font("Segoe UI", 12)).Width)
+                    {
+                        size = TextRenderer.MeasureText(text, new Font("Segoe UI", 12));
+                    }
+                }
+            }
+
+
+            //Set all label width equal to the length of the greatest.
+            foreach (var child in dataGrid.Children)
+            {
+                System.Windows.Controls.Label lbl = (System.Windows.Controls.Label)child;
+                if (lbl != null)
+                {
+                    lbl.Width = size.Width;
+                }
+            }
 
             frame.Width = size.Width + 10;
 
