@@ -143,7 +143,15 @@ namespace DesktopInfo
             //Determine longest label and convert its measurements to pixels.
             System.Drawing.Size size = new System.Drawing.Size();
             foreach (var child in dataGrid.Children) {
-                System.Windows.Controls.Label lbl = (System.Windows.Controls.Label)child;
+                System.Windows.Controls.Label lbl;
+                try
+                {
+                    lbl = (System.Windows.Controls.Label)child;
+                }
+                catch
+                {
+                    lbl = null;
+                }
                 if (lbl != null) {
                     string text = hostnameLabel.Content.ToString();
                     if (size.Width <= TextRenderer.MeasureText(text, new Font("Segoe UI", (int)lbl.FontSize)).Width)
@@ -157,7 +165,15 @@ namespace DesktopInfo
             //Set all label width equal to the length of the greatest.
             foreach (var child in dataGrid.Children)
             {
-                System.Windows.Controls.Label lbl = (System.Windows.Controls.Label)child;
+                System.Windows.Controls.Label lbl;
+                try
+                {
+                    lbl = (System.Windows.Controls.Label)child;
+                }
+                catch
+                {
+                    lbl = null;
+                }
                 if (lbl != null)
                 {
                     lbl.Width = size.Width;
@@ -167,6 +183,13 @@ namespace DesktopInfo
             frame.Width = size.Width;
 
             frame.Left = desktopWorkingArea.Right - frame.Width;
+        }
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            //clean up notifyicon (would otherwise stay open until application finishes)
+            MyNotifyIcon.Dispose();
+
+            base.OnClosing(e);
         }
     }
 }
