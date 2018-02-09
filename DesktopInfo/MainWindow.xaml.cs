@@ -34,10 +34,18 @@ namespace DesktopInfo
         {
             InitializeComponent();
 
+            HideWindowFromTaskbar();
+
             update();
             this.Top = 0;
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
 
+        public void HideWindowFromTaskbar() {
             Window w = new Window(); // Create helper window
             w.Top = -100; // Location of new window is outside of visible part of screen
             w.Left = -100;
@@ -47,16 +55,9 @@ namespace DesktopInfo
             w.WindowStyle = WindowStyle.ToolWindow; // Set window style as ToolWindow to avoid its icon in AltTab 
             w.ShowInTaskbar = false;
             w.Show(); // We need to show window before set is as owner to our main window
-            this.Owner = w; // Okey, this will result to disappear icon for main window.
+            frame.Owner = w; // Okey, this will result to disappear icon for main window.
             w.Hide(); // Hide helper window just in case
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
         }
-        
-
         
         public static string GetLocalIPAddress()
         {
@@ -75,7 +76,8 @@ namespace DesktopInfo
                 return "No Connection";
             }
         }
-        public static string GetBiosVersion() {
+        public static string GetBiosVersion()
+        {
             ManagementClass managementClass = new ManagementClass("Win32_BIOS");
             ManagementObjectCollection instances = managementClass.GetInstances();
             string version = null;
@@ -87,7 +89,8 @@ namespace DesktopInfo
             return version.ToString();
         }
 
-        public static string GetHostname() {
+        public static string GetHostname()
+        {
             return System.Environment.MachineName;
         }
 
@@ -134,7 +137,6 @@ namespace DesktopInfo
             {
                 uptimeLabel.Content = "Last Reboot: \t" + GetUpTime().ToString("%d' days '") + GetUpTime().ToString(@"hh\:mm\:ss");
             }
-
             updateFramePos();
         }
 

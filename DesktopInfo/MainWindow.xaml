@@ -32,7 +32,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <Separator />
+                    <!--<Separator />-->
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
