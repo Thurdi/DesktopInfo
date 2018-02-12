@@ -31,8 +31,6 @@
                             <Image Width="16"
                                    Height="16"/>
                         </MenuItem.Icon>
-                        <!--<MenuItem Header="12" Command="{commands:FontSize12}" CommandParameter="{Binding}" IsCheckable="True"/>
-                        <MenuItem Header="16" Command="{commands:FontSize16}" CommandParameter="{Binding}" IsCheckable="True"/>-->
                         <MenuItem x:Name="fs12" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="12" IsChecked="True" Checked="fs_Checked"/>
                         <MenuItem x:Name="fs16" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="16" Checked="fs_Checked"/>
                         <MenuItem x:Name="fs20" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="20" Checked="fs_Checked"/>
