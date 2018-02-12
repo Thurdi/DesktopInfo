@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DesktopInfo"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:commands="clr-namespace:DesktopInfo.Commands"
+        xmlns:MIE="clr-namespace:DesktopInfo.MenuItemExtensions"
         mc:Ignorable="d"
         Title="MainWindow" Foreground="{x:Null}" Background="{x:Null}" Visibility="Visible" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Width="500" Height="200">
     <Grid x:Name="dataGrid">
@@ -24,6 +25,18 @@
                             <Image Width="16"
                                    Height="16"/>
                         </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Font Size">
+                        <MenuItem.Icon>
+                            <Image Width="16"
+                                   Height="16"/>
+                        </MenuItem.Icon>
+                        <!--<MenuItem Header="12" Command="{commands:FontSize12}" CommandParameter="{Binding}" IsCheckable="True"/>
+                        <MenuItem Header="16" Command="{commands:FontSize16}" CommandParameter="{Binding}" IsCheckable="True"/>-->
+                        <MenuItem x:Name="fs12" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="12" IsChecked="True" Checked="fs_Checked"/>
+                        <MenuItem x:Name="fs16" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="16" Checked="fs_Checked"/>
+                        <MenuItem x:Name="fs20" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="20" Checked="fs_Checked"/>
+                        <MenuItem x:Name="fs24" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="24" Checked="fs_Checked"/>
                     </MenuItem>
                     <MenuItem Header="Exit" Command="{commands:Exit}" CommandParameter="{Binding}">
                         <MenuItem.Icon>

@@ -23,5 +23,14 @@ namespace DesktopInfo
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
