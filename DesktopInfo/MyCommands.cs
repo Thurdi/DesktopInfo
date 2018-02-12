@@ -41,20 +41,4 @@ namespace DesktopInfo.Commands
             return win != null;
         }
     }
-    public class FontSize16 : CommandBase<FontSize16>
-    {
-        public override void Execute(object parameter)
-        {
-            var test = GetTaskbarWindow(parameter);
-            test.FontSize = 16;
-        }
-    }
-    public class FontSize12 : CommandBase<FontSize12>
-    {
-        public override void Execute(object parameter)
-        {
-            var test = GetTaskbarWindow(parameter);
-            test.FontSize = 12;
-        }
-    }
 }

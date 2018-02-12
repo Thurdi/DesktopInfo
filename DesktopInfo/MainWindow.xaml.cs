@@ -17,12 +17,21 @@ namespace DesktopInfo
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
-        public MainWindow()
+        public MainWindow(double fontsize)
         {
             InitializeComponent();
-
+            frame.FontSize = fontsize;
+            var items = FontSizeMenu.Items;
+            if (items != null)
+            {
+                foreach (var child in items)
+                {
+                    if (Convert.ToDouble(((System.Windows.Controls.MenuItem)child).Header) == fontsize)
+                    {
+                        ((System.Windows.Controls.MenuItem)child).IsChecked = true;
+                    }
+                }
+            }
             HideWindowFromTaskbar();
 
             update();
@@ -170,7 +179,16 @@ namespace DesktopInfo
                     lbl.Width = size.Width;
                 }
             }
-
+            var test = dataGrid.RowDefinitions;
+            double total = 0;
+            foreach (var t in test)
+            {
+                t.Height = new GridLength(size.Height);
+                total += size.Height;
+            }
+            dataGrid.Height = total;
+            dataGrid.Width = size.Width;
+            frame.Height = total;
             frame.Width = size.Width;
 
             frame.Left = desktopWorkingArea.Right - frame.Width;

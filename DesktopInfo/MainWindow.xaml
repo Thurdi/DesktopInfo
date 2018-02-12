@@ -8,13 +8,21 @@
         xmlns:commands="clr-namespace:DesktopInfo.Commands"
         xmlns:MIE="clr-namespace:DesktopInfo.MenuItemExtensions"
         mc:Ignorable="d"
-        Title="MainWindow" Foreground="{x:Null}" Background="{x:Null}" Visibility="Visible" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Width="500" Height="200">
+        Title="MainWindow" Foreground="{x:Null}" Background="{x:Null}" Visibility="Visible" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Width="500" Height="196">
     <Grid x:Name="dataGrid">
-        <Label x:Name="hostnameLabel" Content="hostname" HorizontalAlignment="Left" Margin="10,0,-310,0" VerticalAlignment="Top" Foreground="White" Grid.RowSpan="2"/>
-        <Label x:Name="ipLabel" Content="ip addr" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Foreground="White" Grid.RowSpan="2"/>
-        <Label x:Name="biosLabel" Content="bios ver" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Foreground="White" Grid.RowSpan="2"/>
-        <Label x:Name="osLabel" Content="OS ver" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Foreground="White" Grid.RowSpan="2"/>
-        <Label x:Name="uptimeLabel" Content="uptime" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Foreground="White" Grid.RowSpan="2"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="hostnameLabel" Content="hostname" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row ="0" Grid.RowSpan="2"/>
+        <Label x:Name="ipLabel" Content="ip addr" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row ="1" Grid.RowSpan="2"/>
+        <Label x:Name="biosLabel" Content="bios ver" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row ="2" Grid.RowSpan="2"/>
+        <Label x:Name="osLabel" Content="OS ver" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row ="3" Grid.RowSpan="2"/>
+        <Label x:Name="uptimeLabel" Content="uptime" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="4" Grid.RowSpan="2"/>
         <tb:TaskbarIcon x:Name="MyNotifyIcon" IconSource="/icons/circle.ico" ToolTipText="Desktop Info">
             <!-- Set a simple context menu  -->
             <!-- the data context of the context menu is the NotifyIcon itself (see more about this in DataBinding samples) -->
@@ -26,12 +34,12 @@
                                    Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Font Size">
+                    <MenuItem Name ="FontSizeMenu" Header="Font Size">
                         <MenuItem.Icon>
                             <Image Width="16"
                                    Height="16"/>
                         </MenuItem.Icon>
-                        <MenuItem x:Name="fs12" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="12" IsChecked="True" Checked="fs_Checked"/>
+                        <MenuItem x:Name="fs12" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="12" Checked="fs_Checked"/>
                         <MenuItem x:Name="fs16" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="16" Checked="fs_Checked"/>
                         <MenuItem x:Name="fs20" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="20" Checked="fs_Checked"/>
                         <MenuItem x:Name="fs24" MIE:MenuItemExtensions.GroupName="fontSize" IsCheckable="True" Header="24" Checked="fs_Checked"/>
