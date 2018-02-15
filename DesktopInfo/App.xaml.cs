@@ -40,7 +40,6 @@ namespace DesktopInfo
                     disablesystemtray = true;
                 }
                 else if (line.ToLower().StartsWith("fontsize")) {
-                    //config.Add(line.Split(':')[0], line.Split(':')[line.Split(':').Length - 1]);
                     fontsize =  Convert.ToDouble(line.Split(':')[1]);
                 }
                 counter++;
