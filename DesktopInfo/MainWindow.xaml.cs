@@ -20,7 +20,10 @@ namespace DesktopInfo
         public MainWindow(double fontsize)
         {
             InitializeComponent();
+            //SET INITIAL FONT SIZE FROM CONFIG.dat
             frame.FontSize = fontsize;
+
+            //CHECK THE APPROPRIATE FONT SETTING IN SYSTEM TRAY
             var items = FontSizeMenu.Items;
             if (items != null)
             {
@@ -32,6 +35,8 @@ namespace DesktopInfo
                     }
                 }
             }
+
+            //HIDE THE WINDOW FROM TASKBAR
             HideWindowFromTaskbar();
 
             update();
