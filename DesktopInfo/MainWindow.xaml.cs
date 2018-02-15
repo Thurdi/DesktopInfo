@@ -17,9 +17,13 @@ namespace DesktopInfo
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(double fontsize)
+        public MainWindow(bool systemtray, double fontsize)
         {
             InitializeComponent();
+            if (systemtray)
+            {
+                MyNotifyIcon.Visibility = Visibility.Hidden;
+            }
             frame.FontSize = fontsize;
             var items = FontSizeMenu.Items;
             if (items != null)
