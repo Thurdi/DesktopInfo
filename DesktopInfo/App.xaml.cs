@@ -13,11 +13,16 @@ namespace DesktopInfo
     /// </summary>
     public partial class App : Application
     {
-        private double fontsize;
+        private double fontsize = 12;
+        private bool disablesystemtray = false;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            loadConfig();
-            MainWindow mainView = new MainWindow(fontsize);
+            try
+            {
+                loadConfig();
+            }
+            catch {}
+            MainWindow mainView = new MainWindow(disablesystemtray, fontsize);
             mainView.Show();
         }
 
@@ -30,7 +35,11 @@ namespace DesktopInfo
                 new System.IO.StreamReader(@".\config.dat");
             while ((line = file.ReadLine()) != null)
             {
-                if (line.ToLower().StartsWith("fontsize")) {
+                if (line.ToLower().StartsWith("disablesystemtray"))
+                {
+                    disablesystemtray = true;
+                }
+                else if (line.ToLower().StartsWith("fontsize")) {
                     //config.Add(line.Split(':')[0], line.Split(':')[line.Split(':').Length - 1]);
                     fontsize =  Convert.ToDouble(line.Split(':')[1]);
                 }
