@@ -22,8 +22,15 @@ namespace DesktopInfo
                 loadConfig();
             }
             catch {}
-            MainWindow mainView = new MainWindow(disablesystemtray, fontsize);
-            mainView.Show();
+            System.Diagnostics.Process[] prog = System.Diagnostics.Process.GetProcessesByName("DesktopInfo");
+            if (prog.Length < 2)
+            {
+                MainWindow mainView = new MainWindow(disablesystemtray, fontsize);
+                mainView.Show();
+            }
+            else {
+                Application.Current.Shutdown();
+            }
         }
 
         public void loadConfig() {
